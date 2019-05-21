@@ -9,10 +9,10 @@ module.exports = {
       Example:
       return queryInterface.createTable('users', { id: Sequelize.INTEGER });
     */
-   return queryInterface.addConstraint("GunUsers", ["UserId"],{
+   return queryInterface.addConstraint("AssaultRifles", ["GunId"],{
      type: "foreign key",
      references:{
-       table: "Users",
+       table: "Guns",
        field: "id"
      },
      onDelete: "set null",
@@ -28,6 +28,6 @@ module.exports = {
       Example:
       return queryInterface.dropTable('users');
     */
-   return queryInterface.removeConstraint("GunUsers", ["UserId"])
+   return queryInterface.removeConstraint("AssaultRifles", ["GunId"])
   }
 };

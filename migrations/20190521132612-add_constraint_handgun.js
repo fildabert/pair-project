@@ -9,15 +9,15 @@ module.exports = {
       Example:
       return queryInterface.createTable('users', { id: Sequelize.INTEGER });
     */
-   return queryInterface.addConstraint("GunUsers", ["UserId"],{
-     type: "foreign key",
-     references:{
-       table: "Users",
-       field: "id"
-     },
-     onDelete: "set null",
-     onUpdate: "cascade"
-   })
+   return queryInterface.addConstraint("Handguns", ["GunId"],{
+    type: "foreign key",
+    references:{
+      table: "Guns",
+      field: "id"
+    },
+    onDelete: "set null",
+    onUpdate: "cascade"
+  })
   },
 
   down: (queryInterface, Sequelize) => {
@@ -28,6 +28,6 @@ module.exports = {
       Example:
       return queryInterface.dropTable('users');
     */
-   return queryInterface.removeConstraint("GunUsers", ["UserId"])
+   return queryInterface.removeConstraint("Handguns", ["GunId"])
   }
 };
