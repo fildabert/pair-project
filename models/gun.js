@@ -7,6 +7,11 @@ module.exports = (sequelize, DataTypes) => {
     Type: DataTypes.STRING
   }, {});
   Gun.associate = function(models) {
+    Gun.belongsToMany(models.User, {through:models.GunUser})
+    Guns.hasMany(models.Handgun)
+    Guns.hasMany(models.AssaultRifle)
+    Guns.hasMany(models.SniperRifle)
+    Guns.hasMany(models.Smg)
     // associations can be defined here
   };
   return Gun;
