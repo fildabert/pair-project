@@ -7,6 +7,7 @@ module.exports = (sequelize, DataTypes) => {
     GunId: DataTypes.INTEGER
   }, {});
   SniperRifle.associate = function(models) {
+    SniperRifle.belongsTo(models.Gun)
     // associations can be defined here
   };
   return SniperRifle;

@@ -6,6 +6,7 @@ module.exports = (sequelize, DataTypes) => {
     email: DataTypes.STRING
   }, {});
   User.associate = function(models) {
+    User.belongsToMany(models.Gun, {through:models.GunUser})
     // associations can be defined here
   };
   return User;
