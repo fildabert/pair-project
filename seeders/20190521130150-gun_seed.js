@@ -17,6 +17,7 @@ module.exports = {
     ammoType: '.45 ACP',
     capacity: 20,
     Type: 'Smg',
+    price: 1200,
     createdAt: new Date(),
     updatedAt: new Date()
   },
@@ -25,14 +26,16 @@ module.exports = {
     ammoType: '7.62mm',
     capacity: 30,
     Type: 'Assault Rifle',
+    price: 2600,
     createdAt: new Date(),
     updatedAt: new Date()
   },
   {
     name: 'M4A4',
     ammoType: '5.56mm',
-    capacity: 30,
+    capacity: 26,
     Type: 'Assault Rifle',
+    price: 3000,
     createdAt: new Date(),
     updatedAt: new Date()
   },
@@ -41,6 +44,7 @@ module.exports = {
     ammoType: '5.56mm',
     capacity: 30,
     Type: 'Assault Rifle',
+    price: 3300,
     createdAt: new Date(),
     updatedAt: new Date()
   },
@@ -49,6 +53,7 @@ module.exports = {
     ammoType: '.45 ACP',
     capacity: 30,
     Type: 'Smg',
+    price: 1600,
     createdAt: new Date(),
     updatedAt: new Date()
   },
@@ -57,6 +62,7 @@ module.exports = {
     ammoType: '.44 Magnum',
     capacity: 7,
     Type: 'Handgun',
+    price: 900,
     createdAt: new Date(),
     updatedAt: new Date()
   },
@@ -65,6 +71,7 @@ module.exports = {
     ammoType: '0.300 Winchester Magnum',
     capacity: 10,
     Type: 'Sniper',
+    price: 6000,
     createdAt: new Date(),
     updatedAt: new Date()
   },
@@ -73,6 +80,7 @@ module.exports = {
     ammoType: '.308 Winchester',
     capacity: 15,
     Type: 'Sniper',
+    price: 3800,
     createdAt: new Date(),
     updatedAt: new Date()
   },
@@ -81,13 +89,15 @@ module.exports = {
     ammoType: '5.7mm',
     capacity: 50,
     Type: 'Smg',
+    price: 1800,
     createdAt: new Date(),
     updatedAt: new Date()
   },{
-    name: 'Scout',
-    ammoType: '.308 Winchester ',
+    name: 'Uzi',
+    ammoType: '9mm',
     capacity: 15,
-    Type: 'Sniper',
+    Type: 'Smg',
+    price: 1000,
     createdAt: new Date(),
     updatedAt: new Date()
   }
