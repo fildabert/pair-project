@@ -6,7 +6,6 @@ const db = require("./models/index")
 const userRouter = require("./routes/userRouter")
 const gunRouter = require("./routes/gunRouter")
 const encrypt = require("./helpers/encrypt")
-const authenticate = require("./helpers/authenticate")
 
 
 
@@ -14,7 +13,6 @@ app.use((req, res, next) =>{
     res.locals.error = null
     res.locals.testa= "asd"
     res.locals.encrypt = encrypt
-    res.locals.authenticate = authenticate
     next()
 })
 
@@ -23,7 +21,7 @@ app.use(session({
     resave: false,
     saveUninitialized: true
   }))
-  
+
 app.use(express.urlencoded({ extended: false }));
 
 app.use("/users", userRouter)
