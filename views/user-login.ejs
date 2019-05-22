@@ -8,12 +8,15 @@
 </head>
 <body>
     <h1>Login</h1>
+    <% if(error){%>
+        <h3 class="error">Error: <%= error %></h3>
+    <%}%>
     <h3><a href="/users/register">Click here to register</a></h3>
-    <form action="/users/login">
+    <form action="/users/login" method="POST">
         <label for="username">Username</label>
         <input type="text" name="username">
         <label for="password">Password</label>
-        <input type="text" name="password">
+        <input type="password" name="password">
         <button type="submit">Login</button>
     </form>
 </body>

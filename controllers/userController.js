@@ -6,6 +6,9 @@ class userController{
     static showLoginPage(req, res){
         return res.render("user-login.ejs")
     }
+    static loginUser(req, res){
+        return res.send(res.locals.userData)
+    }
     static showRegisterPage(req, res){
         return res.render("user-register.ejs")
     }
