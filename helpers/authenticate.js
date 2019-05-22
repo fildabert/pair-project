@@ -1,0 +1,2 @@
+var encrypt = require("./encrypt")
+
