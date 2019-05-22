@@ -7,7 +7,7 @@ class userController{
         return res.render("user-login.ejs")
     }
     static loginUser(req, res){
-        return res.redirect(`/users/${req.session.user.username}`)
+        return res.redirect(`/users/profile/${req.session.user.username}`)
     }
     static showUserPage(req, res){
         return res.render("user-page.ejs", {
