@@ -10,7 +10,7 @@ class userController{
     static loginUser(req, res){
         return res.redirect(`/users/profile/${req.session.user.username}`)
     }
-    
+
     static showUserPage(req,res) {
         User.findOne({
             where: {
@@ -63,7 +63,7 @@ class userController{
        })
        
         .then((data) => {
-            console.log(req.session)
+            // console.log(req.session)
             data.increment('balance',{by:req.body.balance})
         })
         .then(() => {
