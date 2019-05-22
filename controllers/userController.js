@@ -43,7 +43,7 @@ class userController{
     }
 
     static getTopUpBalance(req,res) {
-        User.findOne({
+        return User.findOne({
             where: {
                 username: req.params.username
             }
@@ -61,8 +61,8 @@ class userController{
                username:req.params.username
            }
        })
-       
         .then((data) => {
+            console.log(data)
             console.log(req.session)
             data.increment('balance',{by:req.body.balance})
         })
