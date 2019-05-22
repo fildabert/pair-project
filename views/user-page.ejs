@@ -7,9 +7,11 @@
     <title><%= userData.username %></title>
 </head>
 <body>
+        <%- include("partials/navbar")%>
     <h1><%= userData.username %></h1>
     <h3>Email: <%= userData.email %></h3>
     <h3>Balance: <%= userData.balance %></h3>
+    <h3><a href="/users/profile/<%=userData.username%>/topUpBalance">Top Up Balance</a></h3>
     
 </body>
 </html>

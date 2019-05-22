@@ -1,5 +1,6 @@
 const db = require("../models/index")
 const router = require("../routes/userRouter")
+const User = require('../models/index').User
 
 
 class userController{
@@ -9,15 +10,20 @@ class userController{
     static loginUser(req, res){
         return res.redirect(`/users/profile/${req.session.user.username}`)
     }
-    static showUserPage(req, res){
-        return res.render("user-page.ejs", {
-            userData:{
-                username: req.session.user.username,
-                email: req.session.user.email,
-                balance: req.session.user.balance|| 0
+    
+    static showUserPage(req,res) {
+        User.findOne({
+            where: {
+                username: req.session.user.username
             }
         })
+        .then((userData)=> {
+            res.render('user-page.ejs', {
+                userData:userData
+            })
+        })
     }
+
     static showRegisterPage(req, res){
         return res.render("user-register.ejs")
     }
@@ -30,9 +36,43 @@ class userController{
             .then(()=>{
                 res.redirect("/")
             })
+            .catch((err) => {
+                res.locals.error = err
+                res.render("user-register.ejs")
+            })
     }
-    
-        
+
+    static getTopUpBalance(req,res) {
+        User.findOne({
+            where: {
+                username: req.params.username
+            }
+        })
+        .then((dataUser) => {
+            res.render('user-topUp.ejs', {
+                dataUser:dataUser
+            })
+        })
+    }
+
+    static postTopUpBalance(req,res) {
+       User.findOne({
+           where:{
+               username:req.params.username
+           }
+       })
+       
+        .then((data) => {
+            console.log(req.session)
+            data.increment('balance',{by:req.body.balance})
+        })
+        .then(() => {
+            res.redirect(`/users/profile/${req.session.user}`)
+        })
+        .catch(err => {
+            res.send(err)
+        })
+    }
     
 }
 

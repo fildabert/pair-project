@@ -12,4 +12,7 @@ router.post("/login", loginAuthenticate, userController.loginUser)
 router.get("/profile/:username", userController.showUserPage)
 router.get("/register", userController.showRegisterPage)
 router.post("/register", registerAuthenticate, userController.registerUser)
+router.get("/profile/:username/topUpBalance", userController.getTopUpBalance)
+router.post("/profile/:username/topUpBalance", userController.postTopUpBalance)
+
 module.exports = router
