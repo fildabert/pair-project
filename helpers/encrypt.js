@@ -7,8 +7,3 @@ function encrypt(password){
 
 module.exports = encrypt
 
-// console.log(encrypt("test"))
-// bcrypt.compare("tesa", encrypt("test"))
-//     .then((res) =>{
-//         console.log(res)
-//     })
