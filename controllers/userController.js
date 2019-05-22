@@ -7,7 +7,16 @@ class userController{
         return res.render("user-login.ejs")
     }
     static loginUser(req, res){
-        return res.send(res.locals.userData)
+        return res.redirect(`/users/${req.session.user.username}`)
+    }
+    static showUserPage(req, res){
+        return res.render("user-page.ejs", {
+            userData:{
+                username: req.session.user.username,
+                email: req.session.user.email,
+                balance: req.session.user.balance|| 0
+            }
+        })
     }
     static showRegisterPage(req, res){
         return res.render("user-register.ejs")

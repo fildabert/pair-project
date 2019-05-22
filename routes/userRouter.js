@@ -15,11 +15,12 @@ router.post("/login", (req, res, next) =>{
             return bcrypt.compare(req.body.password, userData.password)
         })
         .then(valid =>{
-            console.log(valid)
             if(valid){
                 req.session.user = {
                     id: res.locals.userData.id,
-                    username: res.locals.userData.username
+                    username: res.locals.userData.username,
+                    email: res.locals.userData.email,
+                    balance: res.locals.userData.balance
                 }
                 next()
             }else{
@@ -42,6 +43,7 @@ router.post("/login", (req, res, next) =>{
     //     })
 
 }, userController.loginUser)
+router.get("/:username", userController.showUserPage)
 router.get("/register", userController.showRegisterPage)
 router.post("/register", (req, res, next) =>{
     if(req.body.username && req.body.password && req.body.email){
