@@ -25,6 +25,7 @@ app.use(session({
 app.use(express.urlencoded({ extended: false }));
 
 app.use("/users", userRouter)
+app.use("/guns", gunRouter)
 
 app.get("/", (req, res) =>{
     res.render("home.ejs")
