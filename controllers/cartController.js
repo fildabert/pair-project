@@ -21,9 +21,14 @@ class cartController{
                         GunId: gun.id
                     })
                 }else{
-                    // need to add: delete all cart items
-                    res.locals.error = `You have to login first to purchase weapons`
-                    res.render("gun-details-page.ejs")
+                    return db.Cart.destroy({
+                        where: {},
+                        truncate: true
+                      })
+                      .then(()=>{
+                          res.locals.error = `You have to login first to purchase weapons`
+                          res.render("gun-details-page.ejs")
+                      })
                 }
             })
             .then(() =>{
@@ -37,11 +42,27 @@ class cartController{
             .then(result =>{
                 var promises = []
                 for(var i = 0; i < result.length; i++){
-                    
+                    promises.push(
+                        db.GunUser.create({
+                            UserId: result[i].UserId,
+                            GunId: result[i].GunId
+                        })
+                    )
                 }
-                db.GunUser.create({
-                    GunId: result
-                })
+                return Promise.all(promises)
+            })
+            .then(() =>{
+                return db.Cart.destroy({
+                    where: {},
+                    truncate: true
+                  })
+            })
+            .then(() =>{
+                res.redirect("/")
+            })
+
+            .catch(err =>{
+                res.send(err)
             })
     }
 }
