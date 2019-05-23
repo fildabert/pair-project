@@ -16,7 +16,6 @@ class cartController{
                     res.render("gun-details-page.ejs")
                 }
             })
-        
     }
 }
 
