@@ -4,27 +4,79 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Cart</title>
-</head>
-<body>
-    <% var grandTotal = 0 %>
-    <% for(var i = 0; i < cartItem.length; i++){ %>
-        <h4><%= cartItem[i].Gun.name%></h4>
-        <h4><%= cartItem[i].Gun.price%></h4>
-        <h4><%= cartItem[i].dataValues.quantity %></h4>
-        <h4>Total: <%= cartItem[i].dataValues.quantity * cartItem[i].Gun.price %></h4>
-        <% grandTotal+= cartItem[i].dataValues.quantity * cartItem[i].Gun.price %>
-   <%}%>
-   <h4>Grand Total: <%= grandTotal %></h4>
-   
-   <form action="/cart/checkout" method="POST">
-    <button type="submit">Checkout</button>
-    </form>
-
-
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Cart</title>
+</head>
+<%- include("partials/navbar")%>
+<body>
+<script src="https://use.fontawesome.com/c560c025cf.js"></script>
+<div class="container">
+   <div class="card shopping-cart">
+            <div class="card-header bg-dark text-light">
+                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                Shopping cart
+                <a href="/guns" class="btn btn-outline-info btn-sm pull-right">Continue shopping</a>
+                <div class="clearfix"></div>
+            </div>
+           
+            <div class="card-body">
+                    <!-- PRODUCT -->
+                    <% var grandTotal = 0 %>
+                    <% for(var i = 0; i < cartItem.length; i++){ %>
+
+                        <%console.log(cartItem)%>
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-2 text-center">
+                                <img class="img-responsive" src="/<%=cartItem[i].Gun.name%>.jpg" alt="prewiew" width="120" height="80">
+                        </div>
+
+                        <div class="col-12 text-sm-center col-sm-12 text-md-left col-md-6">
+                            <h4 class="product-name"><strong><%=cartItem[i].Gun.name%></strong></h4>
+                            
+                        </div>
+                        <div class="col-12 col-sm-12 text-sm-center col-md-4 text-md-right row">
+                            <div class="col-3 col-sm-3 col-md-6 text-md-right" style="padding-top: 5px">
+                                <h6><strong>$<%=cartItem[i].Gun.price%><span class="text-muted"></span></strong></h6>
+                            </div>
+                            <div class="col-4 col-sm-4 col-md-4">
+                                <div class="quantity">
+                                        <h6 style="padding-top: 5px;"><strong><%=cartItem[i].dataValues.quantity%>x<span class="text-muted"></span></strong></h6>
+                                </div>
+                            </div>
+                            <div class="col-2 col-sm-2 col-md-2 text-right">
+                                <a type="button" class="btn btn-outline-danger btn-xs" href="/cart/delete/<%=cartItem[i].id%>">
+                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <% grandTotal+= cartItem[i].dataValues.quantity * cartItem[i].Gun.price %>
+                    <%}%>
+                    <hr>
+                    <!-- END PRODUCT -->
+                    <!-- PRODUCT -->
+                    <!-- END PRODUCT -->
+            </div>
+            <div class="card-footer">
+                <div class="coupon col-md-5 col-sm-5 no-padding-left pull-left">
+                    <div class="row">
+                    </div>
+                </div>
+                <div class="pull-right" style="margin: 10px">
+                    <form action="/cart/checkout" method="POST">
+                    <button type="submit" class="btn btn-success pull-right">Checkout</button>
+                    </form >
+                    <div class="pull-right" style="margin: 5px">
+                        Total price: <b>$<%=grandTotal%></b>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+
+    
 </body>
 </html>

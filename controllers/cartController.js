@@ -1,5 +1,6 @@
 const db = require("../models/index")
 const sortDuplicates = require("../helpers/calculate-cart-duplicates")
+const Cart = require('../models/index').Cart
 
 class cartController{
     static showCart(req, res){
@@ -68,6 +69,20 @@ class cartController{
                 res.send(err)
             })
     }
+
+    static deleteGunCart(req,res) {
+        Cart.destroy({
+            where:{
+                id:req.params.id
+            }
+        })
+        .then(() => {
+            res.redirect('/cart')
+        })
+        .catch((err) => {
+            res.send(err)
+        })
+    } 
 }
 
 module.exports = cartController
