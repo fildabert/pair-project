@@ -63,8 +63,6 @@ class userController{
            }
        })
         .then((data) => {
-            console.log(data)
-            console.log(req.session)
             data.increment('balance',{by:req.body.balance})
         })
         .then(() => {
