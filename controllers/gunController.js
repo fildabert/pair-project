@@ -1,4 +1,5 @@
 const db = require("../models/index")
+const Gun = require('../models/index').Gun
 
 class gunController{
     static showGuns(req, res){
@@ -25,6 +26,35 @@ class gunController{
                 res.send(err)
             })
     }
+
+    static addGun(req,res) {
+        Gun.findAll()
+        .then((dataGun) => {
+            res.render('addGuns.ejs', {
+                dataGun:dataGun
+            })
+        })
+        .catch((err) => {
+            res.send(err)
+        })
+    }
+
+    static postAddGun(req,res) {
+        Gun.create({
+            name: req.body.name,
+            ammoType: req.body.ammoType,
+            capacity: req.body.capacity,
+            Type: req.body.type,
+            price:req.body.price
+        })
+        .then(() => {
+            res.redirect('/guns')
+        })
+        .catch((err) => {
+            res.send(err)
+        })
+    }
+
 
 }
 
