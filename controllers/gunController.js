@@ -25,6 +25,46 @@ class gunController{
                 res.send(err)
             })
     }
+    static smgGunPage(req, res){
+        return db.Gun.findOne({where:{id: req.params.id}})
+            .then(gun =>{
+                res.locals.gun = gun
+                res.render("gun-details-page.ejs")
+            })
+            .catch(err =>{
+                res.send(err)
+            })
+    }
+    static assaultrifleGunPage(req, res){
+        return db.Gun.findOne({where:{id: req.params.id}})
+            .then(gun =>{
+                res.locals.gun = gun
+                res.render("gun-details-page.ejs")
+            })
+            .catch(err =>{
+                res.send(err)
+            })
+    }
+    static sniperGunPage(req, res){
+        return db.Gun.findOne({where:{id: req.params.id}})
+            .then(gun =>{
+                res.locals.gun = gun
+                res.render("gun-details-page.ejs")
+            })
+            .catch(err =>{
+                res.send(err)
+            })
+    }
+    static handGunPage(req, res){
+        return db.Gun.findOne({where:{id: req.params.id}})
+            .then(gun =>{
+                res.locals.gun = gun
+                res.render("gun-details-page.ejs")
+            })
+            .catch(err =>{
+                res.send(err)
+            })
+    }
 
 }
 
