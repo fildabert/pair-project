@@ -5,6 +5,10 @@ module.exports = (req, res, next) =>{
     if(req.body.username && req.body.password){
         return db.User.findOne({where:{username: req.body.username}})
         .then(userData =>{
+            if(userData === null){
+                res.locals.error = "Invalid Username or Password"
+                res.render("user-login.ejs")
+            }
             res.locals.userData = userData
             return bcrypt.compare(req.body.password, userData.password)
         })
