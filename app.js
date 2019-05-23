@@ -1,11 +1,13 @@
 const express = require('express')
 const session = require("express-session")
+
 const app = express()
 const port = 3000
 const db = require("./models/index")
 const userRouter = require("./routes/userRouter")
 const gunRouter = require("./routes/gunRouter")
 const encrypt = require("./helpers/encrypt")
+app.use(express.static('public'))
 
 
 
@@ -23,7 +25,6 @@ app.use(session({
     cookie:{maxAge: 600000}
   }))
 
-app.use(express.static("public"))
 app.use(express.urlencoded({ extended: false }));
 
 app.use("/users", userRouter)
@@ -32,5 +33,6 @@ app.use("/guns", gunRouter)
 app.get("/", (req, res) =>{
     res.render("home.ejs")
 })
+
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))

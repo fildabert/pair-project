@@ -169,6 +169,19 @@ class gunController{
             })
     }
 
+    static deleteGun(req,res) {
+        Gun.destroy({
+            where:{
+                id:req.params.id
+            }
+        })
+        .then(() => {
+            res.redirect('/guns')
+        })
+        .catch((err) => {
+            res.send(err)
+        })
+    }
 }
 
 module.exports = gunController
