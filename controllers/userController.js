@@ -5,7 +5,11 @@ const User = require('../models/index').User
 
 class userController{
     static showLoginPage(req, res){
-        return res.render("user-login.ejs")
+        if(req.session.user){
+            res.redirect(`/users/profile/${req.session.user.username}`)
+        }else{
+            res.render("user-login.ejs")
+        }
     }
     static loginUser(req, res){
         return res.redirect(`/users/profile/${req.session.user.username}`)
