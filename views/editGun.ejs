@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+        <%- include("partials/navbar")%>
+        <div class="container">
+                <div class="py-5 text-center">
+                  <img class="d-block mx-auto mb-4" src="https://i.ibb.co/xG76cKW/gun-logo.png" alt="" width="72" height="72">
+                  <h2>Guns Form</h2>
+                  <p class="lead">Edit Guns here!</p>
+                </div>
+              
+                <div class="row">
+                  <div class="col-md-10 order-md-4">
+                    <form class="needs-validation" novalidate="" action="/guns/edit/<%=dataGun.id%>" method="POST">
+                      <div class="row">
+                      </div>
+              
+                      <div class="mb-3">
+                        <label for="username">Gun Name</label>
+                        <div class="input-group">
+                          <input type="text" class="form-control" id="username" name="name" value="<%=dataGun.name%>" required="">
+                          <div class="invalid-feedback" style="width: 100%;">
+                            Gun Name is required.
+                          </div>
+                        </div>
+                      </div>
+              
+                      <div class="mb-3">
+                        <label for="ammoType">Ammo Type</label>
+                        <input type="text" class="form-control" id="ammoType" name="ammoType" value="<%=dataGun.ammoType%>">
+                        <div class="invalid-feedback">
+                          Please enter a valid email address for shipping updates.
+                        </div>
+                      </div>
+              
+                      <div class="mb-3">
+                        <label for="capacity">Capacity</label>
+                        <input type="number" class="form-control" id="address" name="capacity" value="<%=dataGun.capacity%>" required="">
+                        <div class="invalid-feedback">
+                          Please enter your shipping address.
+                        </div>
+                      </div>
+                      <div class="mb-3">
+                            <label for="type">Type</label>
+                            <select name="type" class="form-control" id="address2" name ="type" >
+                                    <option value="Assault Rifle">Assault Rifle</option>
+                                    <option value="Handgun">Handgun</option>
+                                    <option value="Smg">Smg</option>
+                                    <option value="Sniper">Sniper</option>
+                            </select>
+                      </div>
+                      <div class="mb-3">
+                            <label for="price">Price</label>
+                            <input type="number" class="form-control" id="address2" name ="price" value="<%=dataGun.price%>">
+                          </div>
+                        </div>
+                      </div>
+                      <hr class="mb-4">
+                      <button class="btn btn-primary btn-lg btn-block" type="submit">Submit</button>
+                    </form>
+                  </div>
+                </div>
+              
+                <footer class="my-5 pt-5 text-muted text-center text-small">
+                  <p class="mb-1">© 2017-2019 Hacktiv8 Guns</p>
+                  <ul class="list-inline">
+                    <li class="list-inline-item"><a href="#">Privacy</a></li>
+                    <li class="list-inline-item"><a href="#">Terms</a></li>
+                    <li class="list-inline-item"><a href="#">Support</a></li>
+                  </ul>
+                </footer>
+              </div>
+    
+
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    
+    
+</body>
+</html>
