@@ -147,14 +147,25 @@ class gunController{
     static search(req, res){
         return db.Gun.findAll() 
             .then(guns =>{
+                var promises = []
                 var regexp = new RegExp(req.body.search, "i")
                 for(var i = 0; i < guns.length; i++){
                     var match = guns[i].name.match(regexp)
                     if(match !== null){
-                        console.log(match.input)
+                        // console.log(match.input)
+                        promises.push(
+                            db.Gun.findOne({where:{name: match.input}})
+                        )
                     }
                 }
-                res.send(guns)
+                return Promise.all(promises)
+            })
+            .then(result =>{
+                res.locals.allGuns = result
+                res.render("guns-display.ejs")
+            })
+            .catch(err =>{
+                res.send(err)
             })
     }
 
