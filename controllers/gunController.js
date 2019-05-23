@@ -183,6 +183,38 @@ class gunController{
             res.send(err)
         })
     }
+
+    static editGun(req,res) {
+        Gun.findByPk(req.params.id)
+        .then((dataGun) => {
+            res.render('editGun.ejs', {
+                dataGun:dataGun
+            })
+        })
+        .catch((err) => {
+            res.send(err)
+        })
+    }
+
+    static postEditGun(req,res) {
+        Gun.update({
+            name: req.body.name,
+            ammoType: req.body.ammoType,
+            capacity: req.body.capacity,
+            Type: req.body.type,
+            price: req.body.price
+        },{
+            where: {
+                id:req.params.id
+            }
+        })
+        .then(() => {
+            res.redirect('/guns')
+        })
+        .catch((err) => 
+            res.send(err)
+        )
+    }
 }
 
 module.exports = gunController

@@ -16,5 +16,7 @@ router.get("/handgun/:id", gunController.handGunPage)
 router.get('/add',gunController.addGun)
 router.post('/add',gunController.postAddGun)
 router.get('/delete/:id',gunController.deleteGun)
+router.get('/edit/:id',gunController.editGun)
+router.post('/edit/:id',gunController.postEditGun)
 
 module.exports = router
