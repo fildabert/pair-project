@@ -8,10 +8,16 @@
     <title>Cart</title>
 </head>
 <body>
+    <% var grandTotal = 0 %>
     <% for(var i = 0; i < cartItem.length; i++){ %>
         <h4><%= cartItem[i].Gun.name%></h4>
         <h4><%= cartItem[i].Gun.price%></h4>
-   <% } %>
+        <h4><%= cartItem[i].dataValues.quantity %></h4>
+        <h4>Total: <%= cartItem[i].dataValues.quantity * cartItem[i].Gun.price %></h4>
+        <% grandTotal+= cartItem[i].dataValues.quantity * cartItem[i].Gun.price %>
+   <%}%>
+   <h4>Grand Total: <%= grandTotal %></h4>
+   
    <form action="/cart/checkout" method="POST">
     <button type="submit">Checkout</button>
     </form>

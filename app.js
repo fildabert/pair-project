@@ -11,20 +11,24 @@ const encrypt = require("./helpers/encrypt")
 app.use(express.static('public'))
 
 
-
-app.use((req, res, next) =>{
-    res.locals.error = null
-    res.locals.type= null
-    res.locals.encrypt = encrypt
-    next()
-})
-
 app.use(session({
     secret: 'keyboard cat',
     resave: false,
     saveUninitialized: true,
     cookie:{maxAge: 600000}
   }))
+
+app.use((req, res, next) =>{
+    res.locals.error = null
+    res.locals.type= null
+    res.locals.encrypt = encrypt
+    res.locals.logged = null
+    if(req.session.user){
+        res.locals.logged = true
+    }
+    next()
+})
+
 
 app.use(express.urlencoded({ extended: false }));
 

@@ -14,5 +14,6 @@ router.get("/register", userController.showRegisterPage)
 router.post("/register", registerAuthenticate, userController.registerUser)
 router.get("/profile/:username/topUpBalance", userController.getTopUpBalance)
 router.post("/profile/:username/topUpBalance", userController.postTopUpBalance)
+router.get("/logout", userController.logout)
 
 module.exports = router
