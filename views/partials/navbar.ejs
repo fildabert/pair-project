@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="/"><img src="https://i.ibb.co/xG76cKW/gun-logo.png" height="50px" width= "50px">HacktivGun</a>
+        <a class="navbar-brand" href="/"><img src="/gun-logo.png" height="50px" width= "50px">HacktivGun</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -17,15 +17,16 @@
                 Guns
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">SMG</a>
-                <a class="dropdown-item" href="#">Assault Rifle</a>
-                <a class="dropdown-item" href="#">Sniper Rifle</a>
-                <a class="dropdown-item" href="#">Handgun</a>
+                <a class="dropdown-item" href="/guns">All Guns</a>
+                <a class="dropdown-item" href="/guns/smg">SMG</a>
+                <a class="dropdown-item" href="/guns/assaultrifle">Assault Rifle</a>
+                <a class="dropdown-item" href="/guns/sniper">Sniper Rifle</a>
+                <a class="dropdown-item" href="/guns/handgun">Handgun</a>
               </div>
             </li>
           </ul>
-          <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <form class="form-inline my-2 my-lg-0" action="/guns/search" method="POST">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" name="search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
           </form>
         </div>
