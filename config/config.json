@@ -5,5 +5,19 @@
     "database": "pair_project",
     "host": "127.0.0.1",
     "dialect": "postgres"
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "htechmudsarxjo",
+    "password": "4984482a993ccb844175452433d6ca0203a40008349babd8ba5d534adf6d1f06",
+    "database": "dehbiae545anu5",
+    "host": "ec2-184-73-216-48.compute-1.amazonaws.com",
+    "dialect": "postgres"
   }
 }
