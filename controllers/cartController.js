@@ -2,7 +2,12 @@ const db = require("../models/index")
 
 class cartController{
     static showCart(req, res){
-        res.render("cart.ejs")
+        return db.Cart.findAll({
+            include:[{model: db.Gun}]
+        })
+            .then(result =>{
+                res.send(result)
+            })
     }
 
     static addToCart(req, res){
@@ -10,11 +15,18 @@ class cartController{
             .then(gun =>{
                 res.locals.gun = gun
                 if(req.session.user){
-
+                    return db.Cart.create({
+                        UserId: req.session.user.id,
+                        GunId: gun.id
+                    })
                 }else{
+                    // need to add: delete all cart items
                     res.locals.error = `You have to login first to purchase weapons`
                     res.render("gun-details-page.ejs")
                 }
+            })
+            .then(() =>{
+                res.redirect("/guns")
             })
         
     }
