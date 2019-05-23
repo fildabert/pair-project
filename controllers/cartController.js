@@ -3,10 +3,11 @@ const db = require("../models/index")
 class cartController{
     static showCart(req, res){
         return db.Cart.findAll({
-            include:[{model: db.Gun}]
+            include:[{model: db.Gun}, {model: db.User}]
         })
             .then(result =>{
-                res.send(result)
+                res.locals.cartItem = result
+                res.render("cart.ejs")
             })
     }
 
@@ -29,6 +30,19 @@ class cartController{
                 res.redirect("/guns")
             })
         
+    }
+
+    static checkout(req, res){
+        return db.Cart.findAll()
+            .then(result =>{
+                var promises = []
+                for(var i = 0; i < result.length; i++){
+                    
+                }
+                db.GunUser.create({
+                    GunId: result
+                })
+            })
     }
 }
 
