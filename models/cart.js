@@ -4,8 +4,10 @@ module.exports = (sequelize, DataTypes) => {
     UserId: DataTypes.INTEGER,
     GunId: DataTypes.INTEGER,
     id:{
-      type: DataTypes.INTEGER,
-      primaryKey: true
+      allowNull: false,
+      autoIncrement: true,
+      primaryKey: true,
+      type: DataTypes.INTEGER
     }
   }, {});
   Cart.associate = function(models) {
