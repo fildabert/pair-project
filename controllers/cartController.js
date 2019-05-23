@@ -3,15 +3,26 @@ const sortDuplicates = require("../helpers/calculate-cart-duplicates")
 
 class cartController{
     static showCart(req, res){
-        return db.Cart.findAll({
-            include:[{model: db.Gun}, {model: db.User}]
-        })
-            .then(result =>{
-                // res.render("cart.ejs")
-                sortDuplicates(result)
-                res.locals.cartItem = result
-                res.render("cart.ejs")
+        if(req.session.user){
+            return db.Cart.findAll({
+                include:[{model: db.Gun}, {model: db.User}]
             })
+                .then(result =>{
+                    // res.render("cart.ejs")
+                    sortDuplicates(result)
+                    res.locals.cartItem = result
+                    res.render("cart.ejs")
+                })
+        }else{
+            return db.Cart.destroy({
+                where: {},
+                truncate: true
+              })
+              .then(()=>{
+                  res.locals.error = `You have to login first to view cart`
+                  res.render("home.ejs")
+              })
+        }
     }
 
     static addToCart(req, res){

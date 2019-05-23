@@ -37,6 +37,7 @@ app.use("/guns", gunRouter)
 app.use("/cart", cartRouter)
 
 app.get("/", (req, res) =>{
+    // console.log(res.locals.error)
     res.render("home.ejs")
 })
 
