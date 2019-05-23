@@ -4,7 +4,8 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING,
     ammoType: DataTypes.STRING,
     capacity: DataTypes.INTEGER,
-    GunId: DataTypes.INTEGER
+    GunId: DataTypes.INTEGER,
+    price: DataTypes.INTEGER
   }, {});
   Handgun.associate = function(models) {
     Handgun.belongsTo(models.Gun)
