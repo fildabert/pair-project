@@ -9,6 +9,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Gun.associate = function(models) {
     Gun.belongsToMany(models.User, {through:models.GunUser})
+    Gun.belongsToMany(models.User, {through:models.Cart})
     Gun.hasMany(models.Handgun)
     Gun.hasMany(models.AssaultRifle)
     Gun.hasMany(models.SniperRifle)
