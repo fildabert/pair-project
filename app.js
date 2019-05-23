@@ -11,7 +11,7 @@ const encrypt = require("./helpers/encrypt")
 
 app.use((req, res, next) =>{
     res.locals.error = null
-    res.locals.testa= "asd"
+    res.locals.type= null
     res.locals.encrypt = encrypt
     next()
 })
@@ -23,6 +23,7 @@ app.use(session({
     cookie:{maxAge: 600000}
   }))
 
+app.use(express.static("public"))
 app.use(express.urlencoded({ extended: false }));
 
 app.use("/users", userRouter)

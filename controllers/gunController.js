@@ -95,6 +95,68 @@ class gunController{
         })
     }
 
+    static allSmgPage(req, res){
+        return db.Smg.findAll()
+            .then(guns =>{
+                res.locals.allGuns = guns
+                res.render("guns-display.ejs",{
+                    type: "Smg"
+                })
+            })
+            .catch(err =>{
+                res.send(err)
+            })
+    }
+    static allAssaultRiflePage(req, res){
+        return db.AssaultRifle.findAll()
+            .then(guns =>{
+                res.locals.allGuns = guns
+                res.render("guns-display.ejs", {
+                    type: "Assault Rifle"
+                })
+            })
+            .catch(err =>{
+                res.send(err)
+            })
+    }
+    static allSniperPage(req, res){
+        return db.SniperRifle.findAll()
+            .then(guns =>{
+                res.locals.allGuns = guns
+                res.render("guns-display.ejs", {
+                    type: "Sniper"
+                })
+            })
+            .catch(err =>{
+                res.send(err)
+            })
+    }
+    static allHandgunPage(req, res){
+        return db.Handgun.findAll()
+            .then(guns =>{
+                res.locals.allGuns = guns
+                res.render("guns-display.ejs", {
+                    type: "Handgun"
+                })
+            })
+            .catch(err =>{
+                res.send(err)
+            })
+    }
+
+    static search(req, res){
+        return db.Gun.findAll() 
+            .then(guns =>{
+                var regexp = new RegExp(req.body.search, "i")
+                for(var i = 0; i < guns.length; i++){
+                    var match = guns[i].name.match(regexp)
+                    if(match !== null){
+                        console.log(match.input)
+                    }
+                }
+                res.send(guns)
+            })
+    }
 
 }
 
