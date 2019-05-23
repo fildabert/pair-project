@@ -56,6 +56,7 @@ class gunController{
                 res.send(err)
             })
     }
+    
     static handGunPage(req, res){
         return db.Gun.findOne({where:{id: req.params.id}})
             .then(gun =>{
