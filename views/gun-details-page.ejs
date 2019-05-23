@@ -34,7 +34,7 @@
               <li>Price: $<%= gun.price %></li>
             </ul>
             <% if(error !== null){ %>
-                
+                <p class="caret" style="color:red;"><%= error %></p>
             <% } %>
             <form action="/cart/add/<%=gun.id %>"  method="POST">
                 <button class="btn btn-primary my-0">Add to cart</button>
